@@ -1,0 +1,57 @@
+
+
+Hint: Do the Experiment 1 using lex program . The program should be saved with .l extension. We can compile this lex program using the command,
+
+ lex programName.l
+
+This will generate a C file which is called lex.yy.c
+
+Compile this c code using , gcc lex.yy.c
+
+It will generate an executable file, a.out
+
+Execute this a.out using ./a.out
+
+DIfferentiating the numbers and letters
+---------------------------------------------------
+%{ 
+
+
+
+#include <stdio.h> 
+
+
+
+%}
+
+%% 
+
+ 
+[0-9]+         printf("NUMBER: %s\n", yytext); 
+
+[a-zA-Z]+    printf("WORD: %s\n", yytext); 
+
+[ \t]+                             
+.       printf("UNKNOWN: %s\n", yytext);
+
+
+%%
+
+int main() 
+
+{
+
+yylex();
+
+return 0; 
+
+}
+
+int yywrap()
+
+{
+
+return 1;
+
+}
+
